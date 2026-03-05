@@ -16,11 +16,6 @@ def title():
     print("\n"*75+'*'*67+'\n'+'*'*8 + "PROYECTO INTEGRADOR: Módulo I, Teoria de Conjutnos "+ '*'*8 +'\n'+'*'*8+f"{'Santiago Cossio Schondube':<51}"+'*'*8+'\n'+'*'*8+f"{'Fernando Ulloa Garcia':<51}"+'*'*8+'\n'+'*'*8+f"{'Pablo Enrique Estrada Samaniego':<51}"+'*'*8+'\n'+'*'*67)
 
 
-def main_menu():
-    print("Elige una opcion:")
-    return menu(["Calculadora de Conjuntos","Sistema de Cifrado de Mensajes"])
-
-
 def calculator():
     u = Set(True)
     sets = {}
