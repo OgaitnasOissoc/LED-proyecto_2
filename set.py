@@ -16,15 +16,16 @@ class Set:
 
     def randset(self, x):
         match x:
-            case 1:
+            case 0:
                 length = random.randint(0,30)
                 for _ in range(length):
                     self.set.append(random.randint(1,100))
             
-            case 2:
+            case 1:
                 length = random.randint(0,15)
                 for _ in range(length):
                     self.set.append(chr(random.randint(33,126)))
     def syncuni(self, x):
         for i in x:
-            self.set.extend(i)
+            if i not in self.set:
+                self.set.append(i)
