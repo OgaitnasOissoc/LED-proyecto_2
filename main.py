@@ -1,9 +1,11 @@
 from set import Set
 from simple_term_menu import TerminalMenu
 
-def menu(x):
+def menu(x, y):
+    print(y)
     terminal_menu = TerminalMenu(x)
     return terminal_menu.show()
+    clear()
 
 
 def clear():
@@ -23,25 +25,20 @@ def calculator():
     u = Set(True)
     sets = {}
     while True:
-        print("Elige una opcion:")
-        calculator_selection = menu(["Creación de conjuntos","Operaciones de conjuntos","Funciones de verificación","Salir"])
-        clear()
+        calculator_selection = menu(["Creación de conjuntos","Operaciones de conjuntos","Funciones de verificación","Salir"],"Elije una opcion:")
         match calculator_selection:
             case 0:
-                selection = menu(["A","B","C"])
+                selection = menu(["A","B","C"],"Elije una opcion")
                 sets[selection] = Set(False)
-                clear()
-                selection2 = menu(["Asignar valores manualmente","Asignar valores aleatoreamente"])
-                clear()
+                selection2 = menu(["Manualmente","Aleatoreamente"],"Como asignar valores:")
                 if selection2 == 0:
                     userset = input("Ingresa el conjunto con elementos separados por comas\n")
-                    userset.split(',')
+                    userset = userset.split(',')
                     sets[selection].userset(userset)
                     clear()
+                    print(sets[selection].set)
                 else:
-                    print("Que tipo de valores deberia tener el conjunto")
-                    sets[selection].randset(menu(["Numeros","Caractares"]))
-                    clear()
+                    sets[selection].randset(menu(["Numeros","Caractares"],"Que tipo de valores tiene el conjunto:"))
 
             case 1:
                 pass
@@ -54,7 +51,6 @@ def calculator():
 if __name__ == "__main__":
     title()
     while True:
-        selection = main_menu()
-        clear()
+        selection = menu(["Calculadora de Conjuntos","Sistema de Cifrado de Mensajes"],"Elije una opcion")
         calculator()
 
