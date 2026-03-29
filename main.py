@@ -36,7 +36,20 @@ def calculator():
                     sets[selection].randset(menu(["Numeros","Caractares"],"Que tipo de valores tiene el conjunto:"))
 
             case 1:
-                pass
+                selection2 = menu(["Unión","Intersección","Diferencia","Diferencia simétrica","Complemento"],"Elige una operacion:")
+                a = menu(["A","B","C"], "Elige el primer conjunto:")
+                b = menu(["A","B","C"], "Elige el segundo conjunto:")
+                match selection2:
+                    case 0:
+                        print(sets[a].union(sets[b].set))
+                    case 1:
+                        pass
+                    case 2:
+                        pass
+                    case 3:
+                        pass
+                    case 4:
+                        pass
             case 2:
                 pass
             case 3:
