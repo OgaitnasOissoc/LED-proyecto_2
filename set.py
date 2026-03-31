@@ -7,6 +7,8 @@ class Set:
     def __init__(self,isuni):
         self.isuni = isuni
         
+    def remove_dupes(self, factors):
+        return list(dict.fromkeys(factors))
 
     def userset(self, x):
         self.set = x
@@ -30,29 +32,30 @@ class Set:
             if i not in self.set:
                 self.set.append(i)
     def union(self, conjunto2):
-        union = self.set + conjunto2
+        union = self.remove_dupes((self.set + conjunto2))
         return union
     def interseccion(self,conjunto2):
         interseccion = []
         for i in self.set:
             if i in conjunto2:
                 interseccion.append(i)
+        interseccion = self.remove_dupes(interseccion)
         return interseccion
     def diferencia(self,conjunto2):
-        diferencia = self.set
+        diferencia = self.set.copy()
         for i in conjunto2:
             if i in diferencia:
-                diferencia = diferencia.pop(i)
+                diferencia.remove(i)
         return diferencia
     def diferencia_simetrica(self,conjunto2):
-        diferencia = self.set + conjunto2
+        diferencia = self.remove_dupes((self.set + conjunto2))
         for i in self.set:
-            if i in j:
-                diferencia = diferencia.pop(i)
+            if i in conjunto2:
+                diferencia.remove(i)
         return diferencia
     def complemento(self, universo):
-        complemento = universo
+        complemento = universo.copy()
         for i in self.set:
             if i in complemento:
-                complemento = complemento.pop(i)
-
+                complemento.remove(i)
+        return complemento

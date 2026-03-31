@@ -34,22 +34,25 @@ def calculator():
                     print(sets[selection].set)
                 else:
                     sets[selection].randset(menu(["Numeros","Caractares"],"Que tipo de valores tiene el conjunto:"))
+                u.set += sets[selection].set
+                u.set = u.remove_dupes(u.set)
 
             case 1:
                 selection2 = menu(["Unión","Intersección","Diferencia","Diferencia simétrica","Complemento"],"Elige una operacion:")
                 a = menu(["A","B","C"], "Elige el primer conjunto:")
-                b = menu(["A","B","C"], "Elige el segundo conjunto:")
+                if selection2 != 4:
+                    b = menu(["A","B","C"], "Elige el segundo conjunto:")
                 match selection2:
                     case 0:
                         print(sets[a].union(sets[b].set))
                     case 1:
-                        pass
+                        print(sets[a].interseccion(sets[b].set))
                     case 2:
-                        pass
+                        print(sets[a].diferencia(sets[b].set))
                     case 3:
-                        pass
+                        print(sets[a].diferencia_simetrica(sets[b].set))
                     case 4:
-                        pass
+                        print(sets[a].complemento(u.set))
             case 2:
                 pass
             case 3:
