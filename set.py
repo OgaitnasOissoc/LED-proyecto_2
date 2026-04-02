@@ -59,3 +59,21 @@ class Set:
             if i in complemento:
                 complemento.remove(i)
         return complemento
+    def igualdad(self,conjunto2):
+        return True if self.set == conjunto2 else False
+    def subconjunto(self, conjunto2):
+        flag = True
+        for i in self.set:
+            if i not in conjunto2:
+                flag = False
+                break
+        return flag
+    def subconjunto_propio(self, conjunto2):
+        return False if self.igualdad(conjunto2) == True else self.subconjunto(conjunto2)
+    def disjunto(self,conjunto2):
+        flag = True
+        for i in self.set:
+            if i in conjunto2:
+                flag = False
+                break
+        return flag

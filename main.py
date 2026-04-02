@@ -54,7 +54,19 @@ def calculator():
                     case 4:
                         print(sets[a].complemento(u.set))
             case 2:
-                pass
+                selection2 = menu(["Subconjunto","Subconjunto propio","Conjuntos disjuntos", "Igualidad de conjuntos"],"Elige una funcion de verificacion")
+                a = menu(["A","B","C"], "Elije el primer conjunto")
+                b = menu(["A","B","C"], "Elije el segundo conjunto")
+                clear()
+                match selection2:
+                    case 0:
+                        print(sets[a].subconjunto(sets[b].set))
+                    case 1:
+                        print(sets[a].subconjunto_propio(sets[b].set))
+                    case 2:
+                        print(sets[a].disjunto(sets[b].set))
+                    case 3:
+                        print(sets[a].igualdad(sets[b].set))
             case 3:
                 break
 
