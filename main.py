@@ -118,12 +118,17 @@ def cifrado():
                             break
 
             case 3:
-                em = menu(emisores.users,"Elige emisor:")
-                re = menu(receptores.users,"Elige receptor:")
-                lla = menu(llaves.users,"Elije llave:")
+                em = emisores.users[menu(emisores.users,"Elige emisor:")]
+                re = receptores.users[menu(receptores.users,"Elige receptor:")]
+                lla = llaves.users[menu(llaves.users,"Elije llave:")]
                 conexiones.add_conection(em,re,lla)
+                conexiones.check_properties(emisores,receptores)
             case 4:
-                selection2 = menu(["Agregar usuario","Eliminar usuario","Ver usuarios","salir"],"Elije una opcion")
+                print("Verificacion de propiedades de funciones:")
+                print(f"- Es Funcion: {'Si' if conexiones.isfunc else 'No'}")
+                print(f"- Inyectiva: {'Si' if conexiones.isinyec else 'No'}")
+                print(f"- Sobreyectiva: {'Si' if conexiones.issubyec else 'No'}")
+                print(f"- Biyectiva: {'Si' if conexiones.isbiyec else 'No'}")
             case 5:
                 pass
             case 6:
