@@ -1,15 +1,17 @@
 from set import Set
+from cifrado import Participant,Conection
 from simple_term_menu import TerminalMenu
+
+def clear():
+    print('\n'*70)
+
 
 def menu(x, y):
     print(y)
     terminal_menu = TerminalMenu(x)
-    return terminal_menu.show()
+    choice = terminal_menu.show()
     clear()
-
-
-def clear():
-    print('\n'*70)
+    return choice
 
 
 def title():
@@ -70,10 +72,74 @@ def calculator():
             case 3:
                 break
 
+def cifrado():
+    emisores = Participant([])
+    receptores = Participant([])
+    llaves = Participant([])
+    conexiones = Conection([])
+    while True:
+        selection = menu(["Gestión de Emisores","Gestion de Receptores","Gestión de llaves","Creación de conexiones","Verificación de propiedades de funciones","Verificación de propiedades de relaciones","Calculadora de conjuntos","salir"],"Elije una opcion")
+        match selection:
+            case 0:
+                while True:
+                    selection2 = menu(["Agregar usuario","Eliminar usuario","Ver usuarios","salir"],"Elije una opcion")
+                    match selection2:
+                        case 0:
+                            emisores.add_user(input("Ingresar usuario: "))
+                        case 1:
+                            emisores.remove_user(input("Ingresar usuario: "))
+                        case 2:
+                            print(emisores.users)
+                        case 3:
+                            break
+            case 1:
+                while True:
+                    selection2 = menu(["Agregar usuario","Eliminar usuario","Ver usuarios","salir"],"Elije una opcion")
+                    match selection2:
+                        case 0:
+                            receptores.add_user(input("Ingresar usuario: "))
+                        case 1:
+                            receptores.remove_user(input("Ingresar usuario: "))
+                        case 2:
+                            print(receptores.users)
+                        case 3:
+                            break
+            case 2:
+                while True:
+                    selection2 = menu(["Agregar llave","Eliminar llave","Ver llaves","salir"],"Elije una opcion")
+                    match selection2:
+                        case 0:
+                            llaves.add_user(input("Ingresar llave: "))
+                        case 1:
+                            llaves.remove_user(input("Ingresar llave: "))
+                        case 2:
+                            print(llaves.users)
+                        case 3:
+                            break
+
+            case 3:
+                em = menu(emisores.users,"Elige emisor:")
+                re = menu(receptores.users,"Elige receptor:")
+                lla = menu(llaves.users,"Elije llave:")
+                conexiones.add_conection(em,re,lla)
+            case 4:
+                selection2 = menu(["Agregar usuario","Eliminar usuario","Ver usuarios","salir"],"Elije una opcion")
+            case 5:
+                pass
+            case 6:
+                pass
+            case 7:
+                break
 
 if __name__ == "__main__":
     title()
     while True:
-        selection = menu(["Calculadora de Conjuntos","Sistema de Cifrado de Mensajes"],"Elije una opcion")
-        calculator()
+        selection = menu(["Calculadora de Conjuntos","Sistema de Cifrado de Mensajes","Salir"],"Elije una opcion")
+        match selection:
+            case 0:
+                calculator()
+            case 1:
+                cifrado()
+            case 2:
+                break
 
