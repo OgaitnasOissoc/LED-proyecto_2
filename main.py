@@ -36,6 +36,7 @@ def calculator():
                     print(sets[selection].set)
                 else:
                     sets[selection].randset(menu(["Numeros","Caractares"],"Que tipo de valores tiene el conjunto:"))
+                    print(sets[selection].set)
                 u.set += sets[selection].set
                 u.set = u.remove_dupes(u.set)
 
@@ -87,7 +88,7 @@ def cifrado():
                         case 0:
                             emisores.add_user(input("Ingresar usuario: "))
                         case 1:
-                            emisores.remove_user(input("Ingresar usuario: "))
+                            emisores.remove_user(emisores.users[menu(emisores.users,"Elije el usuario que quieres eliminar: ")])
                         case 2:
                             print(emisores.users)
                         case 3:
@@ -99,7 +100,7 @@ def cifrado():
                         case 0:
                             receptores.add_user(input("Ingresar usuario: "))
                         case 1:
-                            receptores.remove_user(input("Ingresar usuario: "))
+                            receptores.remove_user(receptores.users[menu(receptores.users,"Elije el usuario que quieres eliminar: ")])
                         case 2:
                             print(receptores.users)
                         case 3:
@@ -109,9 +110,20 @@ def cifrado():
                     selection2 = menu(["Agregar llave","Eliminar llave","Ver llaves","salir"],"Elije una opcion")
                     match selection2:
                         case 0:
-                            llaves.add_user(input("Ingresar llave: "))
+                            while True:
+                                entrada = input("Ingresar llave: ")
+                                try:
+                                    value = int(entrada)
+                                except ValueError:
+                                    value = entrada
+                                if type(value) == int:
+                                    break
+                                else: 
+                                    print("Porfavor ingresa un entero")
+                            llaves.add_user(entrada)
+
                         case 1:
-                            llaves.remove_user(input("Ingresar llave: "))
+                            llaves.remove_user(llaves.users[menu(llaves.users,"Elije la llave que quieres eliminar: ")])
                         case 2:
                             print(llaves.users)
                         case 3:
@@ -137,7 +149,15 @@ def cifrado():
                 print(f"- Simetrica: {'Si' if conexiones.issimet else 'No'}")
                 print(f"- Transitiva: {'Si' if conexiones.istrans else 'No'}")
             case 6:
-                pass
+                a = Set(False)
+                b = Set(False)
+                a.userset(emisores.users)
+                b.userset(receptores.users)
+                print(f"Unión (A ∪ B): {a.union(b.set)}")
+                print(f"Intersección (A ∩ B): {a.interseccion(b.set)} ")
+                print(f"Diferencia (A - B): {a.diferencia(b.set)}")
+                print(f"Diferencia simétrica (A Δ B): {a.diferencia_simetrica(b.set)}")
+                print(f"Complemento (A’): {a.complemento(b.set+a.set)}")
             case 7:
                 break
 

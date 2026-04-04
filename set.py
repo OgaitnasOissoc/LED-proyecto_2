@@ -1,12 +1,10 @@
 import random
 
 class Set:
-    set = []
-    subsets = []
 
     def __init__(self,isuni):
         self.isuni = isuni
-        
+        self.set = []       
     def remove_dupes(self, factors):
         return list(dict.fromkeys(factors))
 
