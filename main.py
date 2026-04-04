@@ -123,6 +123,8 @@ def cifrado():
                 lla = llaves.users[menu(llaves.users,"Elije llave:")]
                 conexiones.add_conection(em,re,lla)
                 conexiones.check_properties(emisores,receptores)
+                conexiones.make_relation()
+                conexiones.check_properties_relation()
             case 4:
                 print("Verificacion de propiedades de funciones:")
                 print(f"- Es Funcion: {'Si' if conexiones.isfunc else 'No'}")
@@ -130,7 +132,10 @@ def cifrado():
                 print(f"- Sobreyectiva: {'Si' if conexiones.issubyec else 'No'}")
                 print(f"- Biyectiva: {'Si' if conexiones.isbiyec else 'No'}")
             case 5:
-                pass
+                print("Verificacion de propiedades de relaciones:")
+                print(f"- Reflexiva: {'Si' if conexiones.isreflex else 'No'}")
+                print(f"- Simetrica: {'Si' if conexiones.issimet else 'No'}")
+                print(f"- Transitiva: {'Si' if conexiones.istrans else 'No'}")
             case 6:
                 pass
             case 7:
