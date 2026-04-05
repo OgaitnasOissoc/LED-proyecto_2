@@ -9,7 +9,7 @@ class Set:
         return list(dict.fromkeys(factors))
 
     def userset(self, x):
-        self.set = remove_dupes(x)
+        self.set = self.remove_dupes(x)
 
     def addset(self,x):
         self.set.extend(x)
